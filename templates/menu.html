@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MENU</title>
+</head>
+<body>
+    <h1> Вітаю!</h1>
+
+    <p> {% for name, price in menu.items() %}
+    {{ name }} — {{ price * 0.9 if status else price }}
+{% endfor %}</p>
+
+</body>
+</html>
