@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🌡️ Конвертер температури 🌡️</title>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+    {% for msg in messages %}
+      <strong> {{ msg }} </strong>
+    {% endfor %}
+  {% endwith %}
+
+    <form method="POST">
+    <label for="temperature">Температура (°C): </label>
+    <input name='temp' type="number" id="temperature">
+    <button type="submit">Перевести</button>
+  </form>
+</body>
+</html>

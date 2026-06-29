@@ -14,4 +14,14 @@ def index():
         return redirect(url_for('index'))
     return render_template('index.html')
 
+@app.route('/temperature', methods=['GET', 'POST'])
+def temperature():
+    if request.method == 'POST':
+        temp = request.form.get('temp')
+        int_temp = int(temp)
+        flash(f"F:{(int_temp*1.8)+32}")
+        # return redirect(url_for('temperature'))
+
+    return render_template('temperature.html')
+
 app.run(debug=True)
