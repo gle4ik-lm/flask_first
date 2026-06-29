@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% with messages = get_flashed_messages() %}
+    {% for msg in messages %}
+      <strong> {{ msg }} </strong>
+    {% endfor %}
+  {% endwith %}
+
+    <form method="POST">
+        <label for= "post_id"> Додайте віш</label>
+        <input name = 'wish' type = "text" id = 'post_id' >
+        <button type = 'submit'>Додати</button>
+    </form>
+
+
+    <form method="GET">
+        <label for='get_id'> Знайдіть подарунок</label>
+        <input name = "get_wish" type = "text" id = 'get_id'>
+        <button type = 'submit'> Знайти </button>
+
+    </form>
+    <ul>
+        {% for wish in wishes %}
+            <li>{{ wish[1] }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
+
