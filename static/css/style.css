@@ -163,3 +163,7 @@ table button:hover {
     background-color: #fdecea;
     color: #c0392b;
 }
+
+.action-form {
+    display: inline;
+}

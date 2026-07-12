@@ -48,10 +48,12 @@ def products():
 
 
 # динамічне посилання з параметрами <>
-@app.route('/delete/<name_product>')
+@app.route('/products/<name_product>', methods=['GET', 'POST'])
 def delete(name_product):
-    flash(f'Product {name_product} was deleted!', category='success')
-
+    if request.method == 'POST':
+        delete_product(name_product)
+        flash(f'Product {name_product} was deleted!', category='success')
+        return redirect(url_for('products'))
     return redirect(url_for('products'))
 
 @app.route('/edit/<name_product>', methods=['GET', 'POST'])

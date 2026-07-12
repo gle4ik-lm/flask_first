@@ -84,15 +84,17 @@
 
               <td>
 
-                <a href="{{ url_for('delete', name_product=product.name) }}">
-                  <button>Delete</button>
-                </a>
+
                   <a href="{{ url_for('update', name_product=product.name) }}">
                     <button>Update</button>
                     </a>
-
+                    <form class="action-form"
+                            action="{{ url_for('delete', name_product=product.name) }}"
+                            method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
               </td>
-                
+
 
             </tr>
           {% endfor %}

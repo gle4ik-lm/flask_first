@@ -26,8 +26,6 @@ def edit_product(name: str, edit_price: int, edit_category: str):
 
         return Product.update(price=edit_price, category=edit_category).where(Product.name == name).execute()
 
-
-
 '''delete'''
-def delete_product():
-    pass
+def delete_product(name_product:str):
+    Product.delete().where(Product.name == name_product).execute()
