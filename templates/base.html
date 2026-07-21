@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!--Заголовок для кожної сторінки буде різним-->
+  <title>{% block title %} {% endblock %}</title>
+
+  {% block style %}
+  {% endblock %}
+
+
+
+</head>
+<body>
+
+  <!--Шапка спільна для всіх сторінок-->
+<header class="header">
+    <div class="container">
+      <div class="logo">
+
+        <a href="{{ url_for('products') }}">
+          <!-- Адреса до статичного файлу -->
+          <img src="{{ url_for('static', filename='image/cart.png') }}" alt="logo">
+          <span>Product Manager</span>
+        </a>
+        <div>
+  <a href="{{ url_for('login') }}" class="btn btn-light" role="button">Login</a>
+  <a href="{{ url_for('register') }}" class="btn btn-outline-light" role="button">Register</a>
+</div>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!--Flash-повідомлення є на всіх сторінках-->
+    {% with messages = get_flashed_messages() %}
+      {% for msg in messages %}
+        <div class="alert alert-info" role="alert">
+          {{ msg }}
+        </div>
+      {% endfor %}
+    {% endwith %}
+
+    <!--Тут буде унікальний контент кожної сторінки-->
+    {% block content %}
+    {% endblock %}
+
+  </main>
+</body>
+</html>

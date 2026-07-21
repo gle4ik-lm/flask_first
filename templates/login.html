@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+Login
+{% endblock %}
+{% block style %}
+<link rel = "stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <form method="POST">
+        <div >
+          <input  name="company" type="text" placeholder="Company">
+        </div>
+        <div class="col-md-2">
+            <input  name="password" type="password"  placeholder="password">
+        </div>
+        <div >
+        <button type="submit">login</button>
+        </div>
+  </form>
+</main>
+{% endblock %}
+
+
+
+
+
