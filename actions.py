@@ -39,3 +39,6 @@ def edit_product(name: str, new_price: float, new_category: str, company_id: int
 
 def delete_product(name: str, company_id: int):
     Product.delete().where((Product.name == name) & (Product.company == company_id)).execute()
+
+def get_product_info(name: str, company_id: int):
+    return  Product.get((Product.name == name) & (Product.company == company_id))

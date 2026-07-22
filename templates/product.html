@@ -1,29 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-  <meta charset="UTF-8">
-  <title>Products</title>
+{% extends "base.html" %}
+{% block title %}
+  Products
+{% endblock %}
+{% block style %}
   <link rel = "stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-
-<header class="header">
-    <div class="container">
-      <div class="logo">
-
-        <a href="{{ url_for('products') }}">
-          <!-- Адреса до статичного файлу -->
-          <img src="{{ url_for('static', filename='image/cart.png') }}" alt="logo">
-          <span>Product Manager</span>
-        </a>
-        <div>
-  <a href="{{ url_for('login') }}" class="btn btn-light" role="button">Login</a>
-  <a href="{{ url_for('register') }}" class="btn btn-outline-light" role="button">Register</a>
-</div>
-
-      </div>
-    </div>
-  </header>
+{% endblock %}
+{% block content %}
 
 <main>
    <div class="container">
@@ -109,5 +91,4 @@
       </table>
    </div>
 </main>
-</body>
-</html>
+{% endblock %}

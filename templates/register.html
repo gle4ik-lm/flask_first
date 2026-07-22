@@ -4,6 +4,7 @@ Register
 {% endblock %}
 {% block style %}
 <link rel = "stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 {% endblock %}
 {% block content %}
 <main>
@@ -11,12 +12,16 @@ Register
             <div>
                 <input  name="company" type="text" placeholder="Company">
             </div>
-            <div class="col-md-2">
-                <input  name="password" type="password"  placeholder="password">
+        <div class="password-container">
+                <div class="col-md-2">
+                <input id="password" name="password" type="password" placeholder="Password">
+                <button type="button" id="togglePassword">👁️</button>
             </div>
+        </div>
             <div>
                 <button type="submit">register</button>
             </div>
   </form>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </main>
 {% endblock %}  

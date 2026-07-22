@@ -12,13 +12,18 @@ Login
         <div >
           <input  name="company" type="text" placeholder="Company">
         </div>
+    <div class="password-container">
         <div class="col-md-2">
-            <input  name="password" type="password"  placeholder="password">
+            <input id="password" name="password" type="password" placeholder="Password">
+                <button type="button" id="togglePassword">👁️</button>
+    </div>
         </div>
         <div >
         <button type="submit">login</button>
         </div>
   </form>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </main>
 {% endblock %}
 

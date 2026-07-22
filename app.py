@@ -70,11 +70,19 @@ def register():
 
             print(f"name={name!r}")
             print(f"password={password!r}")
-            hash_pass = generate_password_hash(password)
-            add_company(name, hash_pass)
-
-            flash(f'Company {name} was created!')
-            return redirect(url_for('login'))
+            if len(password) < 6:
+                flash("Пароль должен содержать минимум 6 символов.")
+            elif not any(c.islower() for c in password):
+                flash("Пароль должен содержать хотя бы одну строчную букву.")
+            elif not any(c.isdigit() for c in password):
+                flash("Пароль должен содержать хотя бы одну цифру.")
+            elif not any(not c.isalnum() for c in password):
+                flash("Пароль должен содержать хотя бы один специальный символ.")
+            else:
+                hash_pass = generate_password_hash(password)
+                add_company(name, hash_pass)
+                flash(f'Company {name} was created!')
+                return redirect(url_for('login'))
 
     return render_template('register.html')
 
@@ -105,6 +113,12 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('company', None)
+    return redirect(url_for('login'))
+
+
 
 # динамічне посилання з параметрами <>
 @app.route('/products/<name_product>', methods=['GET', 'POST'])
@@ -118,6 +132,7 @@ def delete(name_product):
 
 @app.route('/edit/<name_product>', methods=['GET', 'POST'])
 def update(name_product):
+    company = current_company()
     if request.method == 'POST':
         edit_price = request.form.get('edit_price')
         edit_category = request.form.get('edit_category')
@@ -127,7 +142,7 @@ def update(name_product):
 
 
 
-    product = Product.get(Product.name == name_product)
+    product = get_product_info(name_product, company_id=company.id)
     return render_template('edit.html', price=product.price, category=product.category, name = product.name)
 
 

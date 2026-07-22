@@ -167,3 +167,22 @@ table button:hover {
 .action-form {
     display: inline;
 }
+
+.password-container {
+    position: relative;
+    display: inline-block;
+}
+
+.password-container input {
+    padding-right: 40px;
+}
+
+.password-container button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+}
