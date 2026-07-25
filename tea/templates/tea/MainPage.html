@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+Main Page
+{% endblock %}
+
+{% block style %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+{% endblock %}
+{% block content %}
+
+<form method = "post">
+    <div class="input-group">
+  <span class="input-group-text" id="visible-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="visible-addon">
+  <input type="text" class="form-control d-none" placeholder="Hidden input" aria-label="Hidden input" aria-describedby="visible-addon">
+    </div>
+
+</form>
+{% endblock %}
