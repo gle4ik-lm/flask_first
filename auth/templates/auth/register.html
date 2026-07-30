@@ -8,15 +8,22 @@ Register
           rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
           crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main_css.css') }}">
 {% endblock %}
 {% block content %}
 
-<form method = "post">
-    <div class="input-group">
-  <span class="input-group-text" id="visible-addon">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="visible-addon">
-  <input type="text" class="form-control d-none" placeholder="Hidden input" aria-label="Hidden input" aria-describedby="visible-addon">
-    </div>
 
+<form method = "POST">
+
+    <div class="input-group flex-nowrap">
+        <input name = "username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <div class="input-group flex-nowrap">
+        <input name = "password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
+    </div>
+    <div>
+    <button type="submit" class="btn btn-success">log</button>
+    </div>
 </form>
+
 {% endblock %}

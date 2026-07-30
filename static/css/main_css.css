@@ -1,0 +1,84 @@
+:root {
+    --primary-color: #4A3728;
+    --primary-hover: #F7F2E8;
+
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
+
+    --bg-color: #f6f7f8;
+    --card-bg: #ffffff;
+
+    --text-color: #333;
+    --border-color: #eee;
+
+    --success-bg: #e6f7e6;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-hover);
+
+    margin: 0;
+    padding: 20px;
+}
+
+.input-group {
+    max-width: 600px;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.bg-success-subtle{
+    background-color:#4A3728 !important;
+}
+
+.btn-success{
+    background:#4F7942;
+    border:none;
+    width: 400px;
+    margin-top: 10px;
+    margin-left: 150px;
+    margin-bottom: 50px;
+}
+
+.btn-success:hover{
+    background:#3F6B37;
+}
+
+.btn-light {
+    background: #8B6B4A ;
+    border:none;
+}
+
+.links {
+    max-width: 600px;
+    margin-top: 10px;
+    margin-left: 50px;
+    background-color: var(--primary-color);
+}
+
+td {
+
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);}
+
+thead{
+    background:#355E3B;
+    color:white;
+}
+
+tbody tr:nth-child(even){
+    background:#f8f8f8;
+}
+
+tbody tr:hover{
+    background:#E8F5E9;
+}
+
+table {
+    margin-left: 50px;
+    max-width: 1750px;
+}

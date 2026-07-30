@@ -8,16 +8,19 @@ auth_bp = Blueprint('auth', __name__, template_folder='templates')
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.form.get('username')
+        password = request.form.get('password')
         if is_user_exist(username):
             flash('Username already exists')
             return redirect(url_for('auth.register'))
         else:
-
+            print(request.form)
+            print(username)
+            print(password)
             hash_pass = generate_password_hash(password)
             add_user(username, hash_pass)
-            return redirect(url_for('auth.login'))
+            session['user'] = username
+            return redirect(url_for('tea.home'))
 
     return render_template('auth/register.html')
 
@@ -37,7 +40,7 @@ def login():
             flash(f'Password incorrect!')
             return redirect(url_for('auth.login'))
 
-        session['user'] = user.name
+        session['user'] = user.username
         flash(f'Welcome {username}!')
         return redirect(url_for('tea.home'))
     return render_template('auth/login.html')

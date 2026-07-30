@@ -10,26 +10,37 @@
 
 </head>
 <body>
-<header>
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src='/static/img/tea-leaf.png' alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-      TEA space
-    </a>
-  </div>
-    <div>
-              {% if 'company' in session %}
-              <a href="{{ url_for('auth.logout') }}" class="btn btn-light" role="button">LogOut</a>
-              <a href="{{ url_for('auth.register') }}" class="btn btn-outline-light" role="button">Register</a>
-              {% else %}
-              <a href="{{ url_for('auth.login') }}" class="btn btn-light" role="button">Login</a>
-              <a href="{{ url_for('auth.register') }}" class="btn btn-outline-light" role="button">Register</a>
-              {% endif %}
-    </div>
-</nav>
+<header class="header">
+    <nav class="navbar bg-body-tertiary bg-success-subtle">
+        <div class="container-fluid ">
+        <a class="navbar-brand" href="{{ url_for('tea.home') }}">
+          <img src='/static/img/tea-leaf.png' alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          TEA space
+        </a>
+        </div>
+            <div class = 'links'>
+                  {% if 'user' in session %}
+                  <a href="{{ url_for('auth.logout') }}" class="btn btn-light" role="button">LogOut</a>
+                  <a href="{{ url_for('auth.register') }}" class="btn btn-light" role="button">Register</a>
+                  <a href="{{ url_for('tea.to_user_page') }}" class="btn btn-light" role="button">Your page</a>
+                  {% else %}
+                  <a href="{{ url_for('auth.login') }}" class="btn btn-light" role="button">Login</a>
+                  <a href="{{ url_for('auth.register') }}" class="btn btn-light" role="button">Register</a>
+                  <a href="{{ url_for('tea.to_user_page') }}" class="btn btn-light" role="button">Your page</a>
+                  {% endif %}
+            </div>
+    </nav>
 </header>
 <main>
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% for msg in messages %}
+          <div class="alert alert-info" role="alert">
+            {{ msg }}
+          </div>
+        {% endfor %}
+      {% endwith %}
+    </div>
     {% block content %}
     {% endblock %}
 </main>

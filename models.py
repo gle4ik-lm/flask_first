@@ -26,4 +26,5 @@ class UserTeaPage(BaseModel):
 
 def init_db():
     db.connect()
+    # db.drop_tables([TeaPageDb, UserTeaPage, User])
     db.create_tables([TeaPageDb, UserTeaPage, User])

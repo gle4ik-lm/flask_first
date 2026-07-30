@@ -8,15 +8,84 @@ Main Page
           rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
           crossorigin="anonymous">
-{% endblock %}
-{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main_css.css') }}">
 
-<form method = "post">
-    <div class="input-group">
-  <span class="input-group-text" id="visible-addon">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="visible-addon">
-  <input type="text" class="form-control d-none" placeholder="Hidden input" aria-label="Hidden input" aria-describedby="visible-addon">
+{% endblock %}
+
+{% block content %}
+<h3 class="mb-4">User: {{ user }}</h3>
+
+{% if is_admin %}
+<form method = "POST">
+
+     <div class="input-group flex-nowrap">
+        <input name = 'title' type="text" class="form-control" placeholder="Title" aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <div class="input-group flex-nowrap">
+        <input name = 'province' type="text" class="form-control" placeholder="Province" aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <div class="input-group flex-nowrap">
+        <input name = 'type' type="text" class="form-control" placeholder="Type" aria-label="Username" aria-describedby="addon-wrapping">
     </div>
 
+    <button type="submit" class="btn btn-success">Add</button>
+
+
 </form>
+{% endif %}
+  <h3 class="mb-4">Filter:</h3>
+
+  <form method="GET" class="row g-3 mb-4">
+    <div class="col-md-2">
+      <select name="type" class="form-select">
+        <option value="all" {% if choose_category=="all" %} selected {% endif %} > All</option>
+
+        {% for type in types %}
+          <option value= '{{ type }}' {% if choose_category==type %} selected {% endif %} >{{ type }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <button type="submit" class="form-control btn ">Submit</button>
+    </div>
+  </form>
+
+     <h3 class="mb-4">Teas:</h3>
+  <table class="table table-hover" >
+
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Province</th>
+        <th>Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for tea in teas %}
+        <tr>
+          <td>{{ tea.title }}</td>
+          <td>{{ tea.province}}</td>
+          <td>{{ tea.type }}</td>
+          <td>
+            <!--передаємо назву товару для динамічної адреси-->
+            <a href="{{ url_for('user_page.add_tea_in_page', name_tea=tea.title) }}">
+              <button class="btn btn-danger">add in list</button>
+            </a>
+
+          </td>
+
+
+
+
+        </tr>
+      {% endfor %}
+
+    </tbody>
+
+    <tfoot></tfoot>
+  </table>
 {% endblock %}

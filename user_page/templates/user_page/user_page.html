@@ -12,4 +12,56 @@ User Page
 {% endblock %}
 {% block content %}
 
+<h3 class="mb-4">Filter:</h3>
+
+  <form method="GET" class="row g-3 mb-4">
+    <div class="col-md-2">
+      <select name="type" class="form-select">
+        <option value="all" {% if choose_category=="all" %} selected {% endif %} > All</option>
+
+        {% for type in types %}
+          <option value= '{{ type }}' {% if choose_category==type %} selected {% endif %} >{{ type }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <button type="submit" class="form-control btn ">Submit</button>
+    </div>
+  </form>
+
+     <h3 class="mb-4">Teas:</h3>
+
+  <table class="table table-hover" >
+
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Province</th>
+        <th>Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for tea in teas %}
+        <tr>
+          <td>{{ tea.title }}</td>
+          <td>{{ tea.province}}</td>
+          <td>{{ tea.type }}</td>
+          <td>
+          <a href="{{ url_for('user_page.delete_tea_in_page', name_tea=tea.title) }}">
+              <button class="btn btn-danger">delete</button>
+            </a>
+          </td>
+
+        </tr>
+      {% endfor %}
+
+    </tbody>
+
+    <tfoot></tfoot>
+    </table>
 {% endblock %}
+
